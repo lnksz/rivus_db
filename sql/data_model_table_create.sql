@@ -33,7 +33,7 @@ CREATE CAST (CHARACTER VARYING AS public.run_outcome) WITH INOUT AS IMPLICIT;
 
 CREATE TABLE public.run (
     run_id serial NOT NULL,
-    date timestamp without time zone NOT NULL,
+    start_ts timestamp without time zone NOT NULL,
     runner varchar(30) NOT NULL,
     status public.run_status NOT NULL,
     outcome public.run_outcome NOT NULL,
