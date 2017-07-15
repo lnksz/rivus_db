@@ -1,5 +1,3 @@
-CREATE EXTENSION IF NOT EXISTS postgis;
-
 CREATE TABLE public.time (
     time_id serial NOT NULL,
     run_id serial NOT NULL,
