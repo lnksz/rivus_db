@@ -24,3 +24,5 @@ cat ./staruml_export/db_create.sql > db_create.sql
 # This supposes that there is not rivus db in postgres
 psql -h localhost -U postgres -f ./db_create.sql
 psql -h localhost -U postgres -f ./data_model_table_create.sql rivus
+
+read -p "Press [return] to exit"

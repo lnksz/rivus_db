@@ -80,14 +80,14 @@ CREATE TABLE global_points (
 
 CREATE TABLE public.edge_demand (
     edge_id bigserial NOT NULL,
-    commodity_id serial NOT NULL,
-    value real NOT NULL
+    area_id serial NOT NULL,
+    value integer NOT NULL
 );
 
 CREATE INDEX ON public.edge_demand
     (edge_id);
 CREATE INDEX ON public.edge_demand
-    (commodity_id);
+    (area_id);
 
 
 CREATE TABLE public.vertex (
@@ -105,7 +105,7 @@ CREATE INDEX ON public.vertex
 CREATE TABLE public.vertex_source (
     vertex_id bigserial NOT NULL,
     commodity_id serial NOT NULL,
-    value real NOT NULL
+    value integer NOT NULL
 );
 
 CREATE INDEX ON public.vertex_source
@@ -335,7 +335,7 @@ ALTER TABLE public.time ADD CONSTRAINT FK_time__run_id FOREIGN KEY (run_id) REFE
 ALTER TABLE public.area ADD CONSTRAINT FK_area__run_id FOREIGN KEY (run_id) REFERENCES public.run(run_id);
 ALTER TABLE public.edge ADD CONSTRAINT FK_edge__run_id FOREIGN KEY (run_id) REFERENCES public.run(run_id);
 ALTER TABLE public.edge_demand ADD CONSTRAINT FK_edge_demand__edge_id FOREIGN KEY (edge_id) REFERENCES public.edge(edge_id);
-ALTER TABLE public.edge_demand ADD CONSTRAINT FK_edge_demand__commodity_id FOREIGN KEY (commodity_id) REFERENCES public.commodity(commodity_id);
+ALTER TABLE public.edge_demand ADD CONSTRAINT FK_edge_demand__area_id FOREIGN KEY (area_id) REFERENCES public.area(area_id);
 ALTER TABLE public.vertex ADD CONSTRAINT FK_vertex__run_id FOREIGN KEY (run_id) REFERENCES public.run(run_id);
 ALTER TABLE public.vertex_source ADD CONSTRAINT FK_vertex_source__vertex_id FOREIGN KEY (vertex_id) REFERENCES public.vertex(vertex_id);
 ALTER TABLE public.vertex_source ADD CONSTRAINT FK_vertex_source__commodity_id FOREIGN KEY (commodity_id) REFERENCES public.commodity(commodity_id);
