@@ -1,9 +1,15 @@
 # rivus_db
 Postgres database related scripts for [rivus](https://github.com/tum-ens/rivus)
 
-## Entity Relationships
+I found that on the long run, and especially if one works with a lot of optimization parameters,
+a database (structured, queryable and having general format + API) enables me to do much more with the data.
 
-![](img/RivusDB.png) 
+If you are (very) new to the whole database setup method, you could check out this repo's wiki.
+Maybe you can find help for setup and related tasks.
+
+## Entity Relationships (Structure of the database)
+
+![](img/RivusDB.png)
 
 The ER is made with [StarUML2](http://staruml.io/) and the base DDL is generated with [Postgres Extension](https://github.com/adrianandrei-ca/staruml-postgresql).
 The syntax follows the requirements of [Postgres Extension](https://github.com/adrianandrei-ca/staruml-postgresql):
