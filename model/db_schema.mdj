@@ -12552,7 +12552,7 @@
 							},
 							"name": "feature_name",
 							"type": "VARCHAR",
-							"length": "20",
+							"length": "30",
 							"primaryKey": false,
 							"foreignKey": false,
 							"nullable": false,
@@ -12564,9 +12564,9 @@
 							"_parent": {
 								"$ref": "AAAAAAFdMXnDuQUCLeU="
 							},
-							"name": "feature_value",
-							"type": "FLOAT",
-							"length": 0,
+							"name": "feature_text",
+							"type": "VARCHAR",
+							"length": "20",
 							"primaryKey": false,
 							"foreignKey": false,
 							"nullable": false,
