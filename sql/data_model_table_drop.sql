@@ -1,7 +1,5 @@
 DROP EXTENSION IF EXISTS postgis CASCADE;
 
-DROP EXTENSION IF EXISTS tablefunc CASCADE;
-
 DROP TABLE public.time CASCADE;
 DROP TABLE public.area CASCADE;
 DROP TABLE public.run CASCADE;
@@ -26,3 +24,4 @@ DROP TABLE public.flow CASCADE;
 DROP TABLE public.time_hub CASCADE;
 DROP TABLE public.cost CASCADE;
 DROP TABLE public.graph_analysis CASCADE;
+DROP TABLE public.profiler CASCADE;

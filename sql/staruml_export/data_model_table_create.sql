@@ -36,10 +36,8 @@ CREATE TABLE public.run (
     status public.run_status NOT NULL,
     outcome public.run_outcome NOT NULL,
     comment text,
-    pre_duration real,
-    solve_duration real,
-    post_duration real,
     plot jsonb,
+    profiler jsonb,
     PRIMARY KEY (run_id)
 );
 
@@ -321,12 +319,23 @@ CREATE INDEX ON public.cost
 
 CREATE TABLE public.graph_analysis (
     commodity_id serial NOT NULL,
-    feature_name varchar(20) NOT NULL,
-    feature_value real NOT NULL
+    feature_name varchar(30) NOT NULL,
+    feature_text varchar(20) NOT NULL
 );
 
 CREATE INDEX ON public.graph_analysis
     (commodity_id);
+
+
+CREATE TABLE public.profiler (
+    run_id serial NOT NULL,
+    pre_duration real,
+    post_duration real,
+    solve_duration real
+);
+
+CREATE INDEX ON public.profiler
+    (run_id);
 
 
 ALTER TABLE public.time ADD CONSTRAINT FK_time__run_id FOREIGN KEY (run_id) REFERENCES public.run(run_id);
@@ -361,3 +370,4 @@ ALTER TABLE public.time_hub ADD CONSTRAINT FK_time_hub__process_id FOREIGN KEY (
 ALTER TABLE public.time_hub ADD CONSTRAINT FK_time_hub__time_id FOREIGN KEY (time_id) REFERENCES public.time(time_id);
 ALTER TABLE public.cost ADD CONSTRAINT FK_cost__run_id FOREIGN KEY (run_id) REFERENCES public.run(run_id);
 ALTER TABLE public.graph_analysis ADD CONSTRAINT FK_graph_analysis__commodity_id FOREIGN KEY (commodity_id) REFERENCES public.commodity(commodity_id);
+ALTER TABLE public.profiler ADD CONSTRAINT FK_profiler__run_id FOREIGN KEY (run_id) REFERENCES public.run(run_id);
