@@ -44,4 +44,4 @@ if [ "$CREATE" = true ] ; then
 	psql -h localhost -U postgres -f ./data_model_table_create.sql rivus
 fi
 
-read -p "Press [return] to exit"
+read -p "Process finished, press [return] to confirm."
