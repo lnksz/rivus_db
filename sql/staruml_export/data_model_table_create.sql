@@ -319,8 +319,9 @@ CREATE INDEX ON public.cost
 
 CREATE TABLE public.graph_analysis (
     commodity_id serial NOT NULL,
-    feature_name varchar(30) NOT NULL,
-    feature_text varchar(20) NOT NULL
+    is_connected boolean NOT NULL,
+    connected_components integer,
+    is_minimal boolean
 );
 
 CREATE INDEX ON public.graph_analysis
