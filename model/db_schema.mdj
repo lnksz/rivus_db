@@ -9398,7 +9398,7 @@
 									},
 									"name": "enum",
 									"kind": "string",
-									"value": "optima,no_optima,error,not_run",
+									"value": "optimum,optimum_not_found,error,not_run",
 									"checked": false,
 									"number": 0
 								}
