@@ -27,7 +27,7 @@ CREATE TYPE public.run_status AS ENUM('error', 'prepared', 'run');
 
 CREATE CAST (CHARACTER VARYING AS public.run_status) WITH INOUT AS IMPLICIT;
 
-CREATE TYPE public.run_outcome AS ENUM('optima', 'no_optima', 'error', 'not_run');
+CREATE TYPE public.run_outcome AS ENUM('optimum', 'optimum_not_found', 'error', 'not_run');
 
 CREATE CAST (CHARACTER VARYING AS public.run_outcome) WITH INOUT AS IMPLICIT;
 
