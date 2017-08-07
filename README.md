@@ -23,15 +23,50 @@ enum tags   | see description in Postgres Extension
 
 ## Creating the database
 
+It is supposed, that psql is on your path. (If you type `psql` into your terminal, then it is recognized as a command...)
+Also, these helpers were written with following parameters in mind:
+- host: localhost.
+- database superuser: postgres
+- database name: rivus
+
+>*Hint:* you can use Git Bash on Windows to execute .sh or .bash scripts. On Unix, use the ./some-script.sh syntax instead of some-script.sh
+
+### Delete existing `rivus` database and create a new one.
+```
+cd /path/to/rivus_db/
+reset_db.sh
+```
+All the following snippets are packed in this script. If you need just specific parts, read on.
+
+### Drop rivus database 
+```
+cd /path/to/rivus_db/sql/
+_purge_rivus.sh
+```
+
+### Recreate .sql scripts from StarUml export
+```
+cd /path/to/rivus_db/sql/
+create_from_staruml.sh extend
+```
+
+### Recreate .sql scripts from StarUml export and execute them
+```
+cd /path/to/rivus_db/sql/
+create_from_staruml.sh
+```
+
+### Manual database creation with psql
 Using `psql` (if not added to your path, look for it in pg9X/bin).
 ```
+cd /path/to/rivus_db/sql/
 psql -h localhost -U postgres
 \i db_create.sql
 \connect rivus
 \i data_model_table_create.sql
 ```
 
-### Scripts
+### Raw SQL Scripts (in `/gitroot/sql/staruml_export`)
 
 The added scripts are postgres specific sql commands. They are generated with [Postgres Extension](https://github.com/adrianandrei-ca/staruml-postgresql) and extended with the extension specific commands.
 For small modifications (db name, user, table_space) you can modify it manually otherwise use [StarUML2](http://staruml.io/).
