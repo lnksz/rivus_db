@@ -104,11 +104,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#from-included-scripts">From included scripts</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#connect-to-psql">Connect to PSQL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#connect-to-postgresql-server">Connect to PostgreSQL Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bare-bones">Bare bones</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#graphical-ui">Graphical UI</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-with-rivus">Integration with rivus</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
@@ -180,7 +181,7 @@
 <p><a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> is one of the (if not the most) advanced open source databases.
 It combines relational and document based structures very conveniently with each other.
 Moreover, the powerful features it is distributed it is highly extensible. Such an extension is the popular <a class="reference external" href="http://postgis.net/">PostGIS</a> extension, which enables geographical calculations, topological alteration and more, with high performance.</p>
-<p>If it comes to code maturity and maintenance, <abbr title="PostgreSQL">PSQL</abbr> has been around for a while, and is not going anywhere soon(<a class="footnote-reference" href="#id2" id="id1">[1]</a>). It is flexible, fast and has a decent documentation.</p>
+<p>If it comes to code maturity and maintenance, <abbr title="PostgreSQL">PSQL</abbr> has been around for a while, and is not going anywhere soon <a class="footnote-reference" href="#f1" id="id1">[1]</a>. It is flexible, fast and has a decent documentation.</p>
 <p>Anyway, if you hear now for the first time about PostgreSQL, databases and such. Here are some links to start with. But you can feel free use Google or look around in the local library for some offline knowledge. But I emphasise that you should not get scared from these links, they are here for the ones thirsty for deeper understanding, if you want to integrate <code class="docutils literal"><span class="pre">rivus_db</span></code> into <a class="reference external" href="https://github.com/tum-ens/rivus">rivus</a>, you can also get along with some clicks and commands and get your system up and running.</p>
 <ul class="simple">
 <li><a class="reference external" href="http://web.stanford.edu/class/cs145/">Stanford class</a> for university styled jump-start.</li>
@@ -189,7 +190,7 @@ Moreover, the powerful features it is distributed it is highly extensible. Such 
 <li><a class="reference external" href="http://coding-geek.com/how-databases-work/">In depth understanding</a> for those how need to know all of it, before they start.</li>
 </ul>
 <p>If you need some inspiration to take a step away from the spreadsheet and CSV dominated data handling, refresh your frustrating memories with the <a class="reference external" href="http://www.eusprig.org/horror-stories.htm">European Spreadsheet Risks Interest Group</a>.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
+<table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Developed since 1989. For years being in the top 5 popular databases <a class="reference external" href="https://db-engines.com/en/ranking">DB-ENGINE</a></td></tr>
@@ -242,7 +243,7 @@ pgc install postgis23-pg96</p>
 <p>If you want to simply recreate my used schema. You can find a bash script <code class="file docutils literal"><span class="pre">/rivus_db/sql/create_from_staruml.sh</span></code> which is also executable under Windows with e.g. Git Bash.
 See <a class="reference internal" href="reference.html"><span class="doc">Reference</span></a> for more details.</p>
 <p>This script modifies the generated PSQL scripts and also create a database where:</p>
-<dl class="docutils">
+<dl class="docutils" id="database-parameters">
 <dt>prerequisites</dt>
 <dd>server is running on <em>localhost</em> and the database super-user is <em>postgres</em></dd>
 <dt>database</dt>
@@ -252,8 +253,8 @@ See <a class="reference internal" href="reference.html"><span class="doc">Refere
 </dl>
 </div>
 </div>
-<div class="section" id="connect-to-psql">
-<h2>Connect to PSQL<a class="headerlink" href="#connect-to-psql" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="connect-to-postgresql-server">
+<h2>Connect to PostgreSQL Server<a class="headerlink" href="#connect-to-postgresql-server" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bare-bones">
 <h3>Bare bones<a class="headerlink" href="#bare-bones" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://postgresguide.com/utilities/psql.html">psql</a> ships with PostgreSQL. With it you can connect to your server and manage it or query the databases.</p>
@@ -282,8 +283,36 @@ We can also run a simple query:</p>
 <p>Besides the numerous proprietary tools, <a class="reference external" href="http://dbeaver.jkiss.org/">DBeaver</a> is a nice free tool to help you get along with the databases. Only drawback is that it is not available as portable, so you will need the proper privileges to install this piece of software.</p>
 <p>Also, under <code class="docutils literal"><span class="pre">rivus.schemas.tables</span></code> one can have a <em>“spreadsheet like”</em> view into the data. Moreover, you also get a diagram depiction of the relations.</p>
 <img alt="_images/DBeaver_screenshoot.png" src="_images/DBeaver_screenshoot.png" />
-<img alt="_images/DBeaver_screenshoot_er.png" src="_images/DBeaver_screenshoot_er.png" />
+<a class="reference internal image-reference" href="_images/DBeaver_screenshoot_er.png"><img alt="_images/DBeaver_screenshoot_er.png" src="_images/DBeaver_screenshoot_er.png" style="width: 571.2px; height: 816.0px;" /></a>
 </div>
+</div>
+<div class="section" id="integration-with-rivus">
+<h2>Integration with rivus<a class="headerlink" href="#integration-with-rivus" title="Permalink to this headline">¶</a></h2>
+<p>If you finished all the previous steps, then it is worth mentioning, that on the rivus side, the sub-package <code class="file docutils literal"><span class="pre">rivus.io.db</span></code> holds the functions to interact with the database.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">rivus.io</span> <span class="kn">import</span> <span class="n">db</span> <span class="k">as</span> <span class="n">rdb</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://postgres:pass@localhost/rivus&#39;</span><span class="p">)</span>
+<span class="c1"># ...</span>
+<span class="c1"># Modelling, Solving, Analysing</span>
+<span class="c1"># ...</span>
+<span class="n">rdb</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">rivus_model</span><span class="p">,</span> <span class="n">run_data</span><span class="o">=</span><span class="n">run_dict</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple">
+<li>Import sqlalchemy for managing the connection to the database.</li>
+<li>Import the db sub-package.</li>
+<li>Tell sqlalchemy, how it can reach the database. You can recognise the parameters from :ref:database-parameters</li>
+</ol>
+<ol class="arabic simple" start="7">
+<li>Call a self-written, high-level function to store the model related data (inputs and results) into the database schema.</li>
+</ol>
+<p>For more details see the corresponding section of the <a class="reference external" href="http://rivus.readthedocs.io">rivus documentation</a>.</p>
 </div>
 </div>
 

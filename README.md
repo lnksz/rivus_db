@@ -11,7 +11,7 @@ Maybe you can find help for setup and related tasks.
 
 ## Entity Relationships (Structure of the database)
 
-![](img/RivusDB.png)
+![](docs/img/RivusDB.png)
 
 The ER is made with [StarUML2](http://staruml.io/) and the base DDL is generated with [Postgres Extension](https://github.com/adrianandrei-ca/staruml-postgresql).
 The syntax follows the requirements of [Postgres Extension](https://github.com/adrianandrei-ca/staruml-postgresql):

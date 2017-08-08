@@ -5,7 +5,7 @@ PostgreSQL_ is one of the (if not the most) advanced open source databases.
 It combines relational and document based structures very conveniently with each other.
 Moreover, the powerful features it is distributed it is highly extensible. Such an extension is the popular PostGIS_ extension, which enables geographical calculations, topological alteration and more, with high performance. 
 
-If it comes to code maturity and maintenance, :abbr:`PSQL (PostgreSQL)` has been around for a while, and is not going anywhere soon[#]_. It is flexible, fast and has a decent documentation.
+If it comes to code maturity and maintenance, :abbr:`PSQL (PostgreSQL)` has been around for a while, and is not going anywhere soon [#f1]_. It is flexible, fast and has a decent documentation.
 
 Anyway, if you hear now for the first time about PostgreSQL, databases and such. Here are some links to start with. But you can feel free use Google or look around in the local library for some offline knowledge. But I emphasise that you should not get scared from these links, they are here for the ones thirsty for deeper understanding, if you want to integrate ``rivus_db`` into rivus_, you can also get along with some clicks and commands and get your system up and running. 
 
@@ -17,7 +17,7 @@ Anyway, if you hear now for the first time about PostgreSQL, databases and such.
 If you need some inspiration to take a step away from the spreadsheet and CSV dominated data handling, refresh your frustrating memories with the `European Spreadsheet Risks Interest Group`_.
 
 
-.. [#] Developed since 1989. For years being in the top 5 popular databases DB-ENGINE_
+.. [#f1] Developed since 1989. For years being in the top 5 popular databases DB-ENGINE_
 
 .. _rivus: https://github.com/tum-ens/rivus
 .. _Stanford class: http://web.stanford.edu/class/cs145/
@@ -99,6 +99,8 @@ See :doc:`Reference </reference>` for more details.
 
 This script modifies the generated PSQL scripts and also create a database where:
 
+.. _database-parameters:
+
 prerequisites
 	server is running on *localhost* and the database super-user is *postgres*
 database
@@ -151,5 +153,33 @@ Also, under ``rivus.schemas.tables`` one can have a *"spreadsheet like"* view in
 
 .. image:: /img/DBeaver_screenshoot.png
 .. image:: /img/DBeaver_screenshoot_er.png
+	:scale: 80
 
 .. _DBeaver: http://dbeaver.jkiss.org/
+
+Integration with rivus
+-----------------------
+
+If you finished all the previous steps, then it is worth mentioning, that on the rivus side, the sub-package :file:`rivus.io.db` holds the functions to interact with the database.
+
+.. code-block:: python
+	:linenos:
+
+	from sqlalchemy import create_engine
+	from rivus.io import db as rdb
+	engine = create_engine('postgresql://postgres:pass@localhost/rivus')
+	# ...
+	# Modelling, Solving, Analysing
+	# ...
+	rdb.store(engine, rivus_model, run_data=run_dict)
+
+1. Import sqlalchemy for managing the connection to the database.
+2. Import the db sub-package.
+3. Tell sqlalchemy, how it can reach the database. You can recognise the parameters from :ref:database-parameters
+
+7. Call a self-written, high-level function to store the model related data (inputs and results) into the database schema.
+
+For more details see the corresponding section of the `rivus documentation`_.
+
+.. _rivus documentation: http://rivus.readthedocs.io
+
