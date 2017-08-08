@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; rivus_db 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="rivus_db 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Reference" href="reference.html"/>
+        <link rel="prev" title="Overview" href="overview.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> rivus_db
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-postgresql">Install PostgreSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#with-admin-root">With Admin / root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#without-admin-root">Without Admin / root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-postgis-for-geographical-support">Adding PostGIS for geographical support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#create-your-database">Create your database</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">rivus_db</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-postgresql">
+<h2>Install PostgreSQL<a class="headerlink" href="#install-postgresql" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="with-admin-root">
+<h3>With Admin / root<a class="headerlink" href="#with-admin-root" title="Permalink to this headline">¶</a></h3>
+<p>My favoured way to install <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> locally is the excellent distribution of
+BigSQL. You can get <a class="reference external" href="https://www.openscg.com/bigsql/postgresql/installers.jsp/">multi-platform installers</a> and <em>click through</em> the installation and get ‘Start PostgreSQL` integration into your Windows Start Menu.
+things.
+This is convenient and especially likeable for Windows users. However, you will need admin
+privileges.
+(A similar alternative is offered by <a class="reference external" href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads/">EDB</a> which has a nice ‘Stack Builder’ solution for managing extensions.)</p>
+</div>
+<div class="section" id="without-admin-root">
+<h3>Without Admin / root<a class="headerlink" href="#without-admin-root" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Get the <em>multi-platform</em> <a class="reference external" href="https://www.openscg.com/bigsql/package-manager/">Postgres Package Manager</a> by BigSQL.</div>
+<div class="line">Follow the instructions on that page. (Less than 5 commands…)</div>
+</div>
+<p>After you are ready, you can source the <code class="docutils literal"><span class="pre">.env</span></code> file (or execute <code class="file docutils literal"><span class="pre">/BigSQL/pgX.x/pg</span><em><span class="pre">X.x</span></em><span class="pre">-env.bat</span></code> .) So the <a class="reference external" href="https://www.openscg.com/bigsql/docs/pgcli/pgcli">pgc</a> and <code class="docutils literal"><span class="pre">psql</span></code> commands get available globally.</p>
+<p>If you did things right you can see the status, start, stop and more with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pgc</span> <span class="n">status</span>
+<span class="n">pgc</span> <span class="n">start</span>
+<span class="n">pgc</span> <span class="n">stop</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-postgis-for-geographical-support">
+<h3>Adding PostGIS for geographical support<a class="headerlink" href="#adding-postgis-for-geographical-support" title="Permalink to this headline">¶</a></h3>
+<p>Regardless of how you installed the database, if you want to have geographical support
+to your data. (Which we usually want with <code class="docutils literal"><span class="pre">rivus</span></code>.) You can go ahead and add it to your BigSQL installation with their <em>pretty good command line tool</em>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pgc</span> <span class="n">install</span> <span class="n">postgis23</span><span class="o">-</span><span class="n">pg96</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-your-database">
+<h2>Create your database<a class="headerlink" href="#create-your-database" title="Permalink to this headline">¶</a></h2>
+<p>I like to first create my database schema visually. I use the <em>multi-platform</em> proprietary but freely and unrestrictedly evaluable <a class="reference external" href="http://staruml.io/download">StarUML2</a> with its nice <a class="reference external" href="https://github.com/adrianandrei-ca/staruml-postgresql">PSQL plugin</a> which can generate PostgreSQL flavoured SQL code for the created diagram.</p>
+<p>Such generated scripts can be found</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reference.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, lnksz - Havasi Kristof.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

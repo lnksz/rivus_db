@@ -1,6 +1,8 @@
 # rivus_db
 Postgres database related scripts for [rivus](https://github.com/tum-ens/rivus)
 
+[Documentation](http://rivus-db.readthedocs.io/en/latest/index.html)
+
 I found that on the long run, and especially if one works with a lot of optimization parameters,
 a database (structured, queryable and having general format + API) enables me to do much more with the data.
 
