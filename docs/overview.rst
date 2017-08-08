@@ -1,48 +1,43 @@
 Overview
 ========
 
-What is rivus
+`rivus`_ is a cool open-source project, which is all about energy grid optimization with very high spatial resolution. (For that however with low time resolution.)
+
+This repository is an extension for that project, to facilitate database integration.
 
 
-Who uses NetworkX?
+Who uses rivus?
 ------------------
 
-For whom.
+The project is still in an early phase, but as it was created and is maintained at the fabulous university of `TUM`_ there will be (hopefully) always somebody actively working with it.
+
+.. _rivus: https://github.com/tum-ens/rivus
+.. _TUM: https://www.ens.ei.tum.de/en/homepage/
   
 Goals
------
-NetworkX is intended to provide
+------
 
--  Goal1
--  Goal2
+I found that on the long run, and especially if one works with a lot of optimization parameters, a database (structured, queryable and accessible in a general, standard format as DBAPI) enables me to do much more with the data. As I strongly believe, that this method could be useful
+in many other projects as well, I published and documented my work-flow.
 
+It is nothing ground breaking nor is it the *"next big thing"* but hopefully it will empower some to shed their fear from databases and enable themselves to work more efficiently with more data. 
 
-The Python programming language
--------------------------------
+As such, this documentation also guide you through the database installation process. And gives some tips on the set-up maybe more in 
 
-Python is a powerful programming language that allows simple and flexible representations of networks, and  clear and concise expressions of network algorithms (and other algorithms too).  Python has a vibrant and growing ecosystem of packages that NetworkX uses to provide more features such as numerical linear algebra and drawing.  In addition 
-Python is also an excellent "glue" language for putting together pieces of software from other languages which allows reuse of legacy code and engineering of high-performance algorithms [Langtangen04]_. 
+Disclaimer
+-----------
+Usually, such a small repository would not need such an extensive documentation, but I decided to create this, as:
 
-Equally important, Python is free, well-supported, and a joy to use. 
+- I want to propose the easiest, most attractive way for individuals working with `rivus`_ to  the database world.
+- I wanted to teach myself reStructuredText, Sphinx and the whole readthedocs work-flow.
 
-In order to make the most out of NetworkX you will want to know how to write basic programs in Python.  
-Among the many guides to Python, we recommend the documentation at
-http://www.python.org and the text by Alex Martelli [Martelli03]_.
-
-Free software
--------------
-
-look up rivus licence
-
-
-History
--------
-
-Some story
+Although, I thrive to publish useful, practical materials. All the code is provided "as is". No responsibility is taken for any caused errors.
 
 
 
 What Next
 ^^^^^^^^^
 
+- :doc:`Getting started </introduction>`
+- :doc:`More Details </reference>`
 

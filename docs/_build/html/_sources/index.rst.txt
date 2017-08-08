@@ -4,7 +4,7 @@
 rivus_db documentation
 ======================
 
-``rivus_db``_ is a database helper extension for the ``rivus`` project.
+`rivus_db`_ is a database helper extension for the `rivus`_ project.
 It helps you set up and manage a PostgreSQL_ database for the project, with some
 specific configuration. (Specific for my current work with rivus.)
 
@@ -31,12 +31,4 @@ Under :doc:`reference`, you can find the detailed entity diagram and description
    introduction
    reference
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 

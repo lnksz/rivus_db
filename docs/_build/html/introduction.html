@@ -93,13 +93,22 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#install-postgresql">Install PostgreSQL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#get-postgresql">Get PostgreSQL</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#with-admin-root">With Admin / root</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#without-admin-root">Without Admin / root</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-postgis-for-geographical-support">Adding PostGIS for geographical support</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#create-your-database">Create your database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-your-database">Create your database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#from-scratch">From scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-included-scripts">From included scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#connect-to-psql">Connect to PSQL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bare-bones">Bare bones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graphical-ui">Graphical UI</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
@@ -168,8 +177,26 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="install-postgresql">
-<h2>Install PostgreSQL<a class="headerlink" href="#install-postgresql" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> is one of the (if not the most) advanced open source databases.
+It combines relational and document based structures very conveniently with each other.
+Moreover, the powerful features it is distributed it is highly extensible. Such an extension is the popular <a class="reference external" href="http://postgis.net/">PostGIS</a> extension, which enables geographical calculations, topological alteration and more, with high performance.</p>
+<p>If it comes to code maturity and maintenance, <abbr title="PostgreSQL">PSQL</abbr> has been around for a while, and is not going anywhere soon(<a class="footnote-reference" href="#id2" id="id1">[1]</a>). It is flexible, fast and has a decent documentation.</p>
+<p>Anyway, if you hear now for the first time about PostgreSQL, databases and such. Here are some links to start with. But you can feel free use Google or look around in the local library for some offline knowledge. But I emphasise that you should not get scared from these links, they are here for the ones thirsty for deeper understanding, if you want to integrate <code class="docutils literal"><span class="pre">rivus_db</span></code> into <a class="reference external" href="https://github.com/tum-ens/rivus">rivus</a>, you can also get along with some clicks and commands and get your system up and running.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://web.stanford.edu/class/cs145/">Stanford class</a> for university styled jump-start.</li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=4Z9KEBexzcM">Video jump-start</a> for those who prefer moving media.</li>
+<li><a class="reference external" href="https://www.postgresql.org/files/developer/tour.pdf">PostgreSQL specific</a> tour, you can jump through the too detailed sections.</li>
+<li><a class="reference external" href="http://coding-geek.com/how-databases-work/">In depth understanding</a> for those how need to know all of it, before they start.</li>
+</ul>
+<p>If you need some inspiration to take a step away from the spreadsheet and CSV dominated data handling, refresh your frustrating memories with the <a class="reference external" href="http://www.eusprig.org/horror-stories.htm">European Spreadsheet Risks Interest Group</a>.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Developed since 1989. For years being in the top 5 popular databases <a class="reference external" href="https://db-engines.com/en/ranking">DB-ENGINE</a></td></tr>
+</tbody>
+</table>
+<div class="section" id="get-postgresql">
+<h2>Get PostgreSQL<a class="headerlink" href="#get-postgresql" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="with-admin-root">
 <h3>With Admin / root<a class="headerlink" href="#with-admin-root" title="Permalink to this headline">¶</a></h3>
 <p>My favoured way to install <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> locally is the excellent distribution of
@@ -187,25 +214,76 @@ privileges.
 </div>
 <p>After you are ready, you can source the <code class="docutils literal"><span class="pre">.env</span></code> file (or execute <code class="file docutils literal"><span class="pre">/BigSQL/pgX.x/pg</span><em><span class="pre">X.x</span></em><span class="pre">-env.bat</span></code> .) So the <a class="reference external" href="https://www.openscg.com/bigsql/docs/pgcli/pgcli">pgc</a> and <code class="docutils literal"><span class="pre">psql</span></code> commands get available globally.</p>
 <p>If you did things right you can see the status, start, stop and more with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pgc</span> <span class="n">status</span>
-<span class="n">pgc</span> <span class="n">start</span>
-<span class="n">pgc</span> <span class="n">stop</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pgc status
+pgc start
+pgc stop
 </pre></div>
 </div>
 </div>
 <div class="section" id="adding-postgis-for-geographical-support">
 <h3>Adding PostGIS for geographical support<a class="headerlink" href="#adding-postgis-for-geographical-support" title="Permalink to this headline">¶</a></h3>
 <p>Regardless of how you installed the database, if you want to have geographical support
-to your data. (Which we usually want with <code class="docutils literal"><span class="pre">rivus</span></code>.) You can go ahead and add it to your BigSQL installation with their <em>pretty good command line tool</em>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pgc</span> <span class="n">install</span> <span class="n">postgis23</span><span class="o">-</span><span class="n">pg96</span>
-</pre></div>
-</div>
+to your data. (Which we usually want with <code class="docutils literal"><span class="pre">rivus</span></code>.) You can go ahead and add it to your BigSQL installation with their <em>pretty good command line tool</em>:
+::
+pgc install postgis23-pg96</p>
 </div>
 </div>
 <div class="section" id="create-your-database">
 <h2>Create your database<a class="headerlink" href="#create-your-database" title="Permalink to this headline">¶</a></h2>
-<p>I like to first create my database schema visually. I use the <em>multi-platform</em> proprietary but freely and unrestrictedly evaluable <a class="reference external" href="http://staruml.io/download">StarUML2</a> with its nice <a class="reference external" href="https://github.com/adrianandrei-ca/staruml-postgresql">PSQL plugin</a> which can generate PostgreSQL flavoured SQL code for the created diagram.</p>
-<p>Such generated scripts can be found</p>
+<div class="section" id="from-scratch">
+<h3>From scratch<a class="headerlink" href="#from-scratch" title="Permalink to this headline">¶</a></h3>
+<p>I like to create the basis of my database schema visually. I use the <em>multi-platform</em> proprietary but freely and unrestrictedly evaluable <a class="reference external" href="http://staruml.io/download">StarUML2</a> with its nice <a class="reference external" href="https://github.com/adrianandrei-ca/staruml-postgresql">PSQL plug-in</a> which can generate PostgreSQL flavoured SQL code for the created diagram.</p>
+<p>The plug-in has some own syntax, but all in all, generates good basis.</p>
+<p>Such generated scripts can be found in <code class="file docutils literal"><span class="pre">/rivus_db/sql/staruml_export/</span></code></p>
+<p>After that you can change them if needed and execute them as described in <a class="reference external" href="https://github.com/adrianandrei-ca/staruml-postgresql#file-deployment">PSQL plug-in file deployment</a>.</p>
+</div>
+<div class="section" id="from-included-scripts">
+<h3>From included scripts<a class="headerlink" href="#from-included-scripts" title="Permalink to this headline">¶</a></h3>
+<p>If you want to simply recreate my used schema. You can find a bash script <code class="file docutils literal"><span class="pre">/rivus_db/sql/create_from_staruml.sh</span></code> which is also executable under Windows with e.g. Git Bash.
+See <a class="reference internal" href="reference.html"><span class="doc">Reference</span></a> for more details.</p>
+<p>This script modifies the generated PSQL scripts and also create a database where:</p>
+<dl class="docutils">
+<dt>prerequisites</dt>
+<dd>server is running on <em>localhost</em> and the database super-user is <em>postgres</em></dd>
+<dt>database</dt>
+<dd>will be called rivus</dd>
+<dt>extension</dt>
+<dd>PostGIS will be created.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="connect-to-psql">
+<h2>Connect to PSQL<a class="headerlink" href="#connect-to-psql" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bare-bones">
+<h3>Bare bones<a class="headerlink" href="#bare-bones" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://postgresguide.com/utilities/psql.html">psql</a> ships with PostgreSQL. With it you can connect to your server and manage it or query the databases.</p>
+<p>Let’s see an example:</p>
+<div class="highlight-psql"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">h</span> <span class="n">localhost</span> <span class="o">-</span><span class="n">U</span> <span class="n">postgres</span> <span class="n">rivus</span>
+<span class="gp">=#</span><span class="kp">\dl</span>
+<span class="gp">=#</span><span class="mf">...</span>
+</pre></div>
+</div>
+<p>With the previous commands you connected to the locally running database called rivus, as the database user postgres.
+With <code class="docutils literal"><span class="pre">\dl</span></code> we list all the relations in the DB.
+We can also run a simple query:</p>
+<div class="highlight-psql"><div class="highlight"><pre><span></span><span class="gp">=#</span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">run</span> <span class="k">LIMIT</span> <span class="mf">10</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This query can also span to multiple lines. The query will be executed if you hit return after the closing semi-colon.</p>
+<div class="highlight-psql"><div class="highlight"><pre><span></span><span class="gp">=#</span><span class="k">SELECT</span> <span class="o">*</span>
+<span class="gp">-#</span><span class="k">FROM</span> <span class="n">run</span>
+<span class="gp">-#</span><span class="k">WHERE</span> <span class="n">start_ts</span> <span class="o">&gt;</span> <span class="s1">&#39;2017-08-08 12:00:00&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="graphical-ui">
+<h3>Graphical UI<a class="headerlink" href="#graphical-ui" title="Permalink to this headline">¶</a></h3>
+<p>If you learn how to use <code class="docutils literal"><span class="pre">psql</span></code> from the command line you will gain some useful skills on the long run. However, you can use some graphical user interface to ease the learning curve or reuse queries.</p>
+<p>Besides the numerous proprietary tools, <a class="reference external" href="http://dbeaver.jkiss.org/">DBeaver</a> is a nice free tool to help you get along with the databases. Only drawback is that it is not available as portable, so you will need the proper privileges to install this piece of software.</p>
+<p>Also, under <code class="docutils literal"><span class="pre">rivus.schemas.tables</span></code> one can have a <em>“spreadsheet like”</em> view into the data. Moreover, you also get a diagram depiction of the relations.</p>
+<img alt="_images/DBeaver_screenshoot.png" src="_images/DBeaver_screenshoot.png" />
+<img alt="_images/DBeaver_screenshoot_er.png" src="_images/DBeaver_screenshoot_er.png" />
+</div>
 </div>
 </div>
 
