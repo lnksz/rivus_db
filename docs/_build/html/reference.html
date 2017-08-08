@@ -94,6 +94,8 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#entity-relations">Entity Relations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enumerated-values">Enumerated values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scripts">Scripts</a></li>
 </ul>
 </li>
 </ul>
@@ -163,7 +165,218 @@
 <h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="entity-relations">
 <h2>Entity Relations<a class="headerlink" href="#entity-relations" title="Permalink to this headline">¶</a></h2>
-<p>The inner</p>
+<p>The structure was created so that it is as flexible as possible regarding dimension changes.
+E.g. The number of commodities, demand types etc. are normalized in 3NF.
+As such it is no problem (read, you do not need to restructure the database), if at one time there is not 2 but 3 commodity types that are included in the demand per edge DataFrame.
+Database structural changes are no friend of ours…</p>
+<p>Change in the program part:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="36%" />
+<col width="21%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Edge</th>
+<th class="head">geometry</th>
+<th class="head">Heat</th>
+<th class="head">Elec</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>LINE</td>
+<td>150</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>to</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="29%" />
+<col width="18%" />
+<col width="18%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Edge</th>
+<th class="head">geometry</th>
+<th class="head">Heat</th>
+<th class="head">Elec</th>
+<th class="head">Cold</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>LINE</td>
+<td>150</td>
+<td>200</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>Is no problem, as in the DB the edge table is separated from the demand table.
+The relation is represented by a table which connects an edge with a commodity.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="27%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">edge_id</th>
+<th class="head">edge</th>
+<th class="head">geometry</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>12345</td>
+<td>0</td>
+<td>LINE</td>
+</tr>
+</tbody>
+</table>
+<p>is connected to</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">commodity_id</th>
+<th class="head">commodity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>345</td>
+<td>Heat</td>
+</tr>
+</tbody>
+</table>
+<p>through</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="44%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">edge_id</th>
+<th class="head">commodity_id</th>
+<th class="head">demand</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>12345</td>
+<td>345</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>More on normalization and normal forms <a class="reference external" href="http://www.studytonight.com/dbms/database-normalization.php">here (simple)</a>
+and <a class="reference external" href="https://www.sqa.org.uk/e-learning/SoftDevRDS02CD/page_11.htm">here (detailed)</a></p>
+<p>The above example shows that storing the DataFrames of the rivus model is often
+not a proper solution.</p>
+<p>In the following diagram you can see how the data is organised inside the database.
+Besides the names, you can retrieve the respective data types too.</p>
+<blockquote>
+<div>Note: Some type notation follow the syntax of the <a class="reference external" href="https://github.com/adrianandrei-ca/staruml-postgresql">PSQL plug-in</a></div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Special</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>INTEGER(-1)</td>
+<td>for Postgres data type SERIAL</td>
+</tr>
+<tr class="row-odd"><td>BIGINT(-1)</td>
+<td>for Postgres data type BIGSERIAL</td>
+</tr>
+<tr class="row-even"><td>enum tags</td>
+<td>see description in Postgres Extension</td>
+</tr>
+</tbody>
+</table>
+<img alt="_images/RivusDB.png" src="_images/RivusDB.png" />
+<dl class="docutils">
+<dt>Blue:</dt>
+<dd>Optimization results</dd>
+<dt>Gray:</dt>
+<dd>Input (spatial and non-spatial)</dd>
+<dt>White:</dt>
+<dd>Global and extensions.</dd>
+</dl>
+</div>
+<div class="section" id="enumerated-values">
+<h2>Enumerated values<a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<p>The following columns accept only the listed values (Case Sensitive.)
+Notation: <code class="docutils literal"><span class="pre">table.columns</span></code></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">run.status</span></code>:</dt>
+<dd><ul class="first last simple">
+<li>prepared</li>
+<li>run</li>
+<li>error</li>
+</ul>
+</dd>
+<dt><code class="docutils literal"><span class="pre">run.outcome</span></code>:</dt>
+<dd><ul class="first last simple">
+<li>optimum,</li>
+<li>optimum_not_found</li>
+<li>error</li>
+<li>not_run</li>
+</ul>
+</dd>
+<dt><code class="docutils literal"><span class="pre">process_commodity.direction</span></code>:</dt>
+<dd><ul class="first last simple">
+<li>in</li>
+<li>out</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="scripts">
+<h2>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
+<p>Short summary of the used scripts. These scripts are shot and rich with in-line
+documentation. So for detail open them up with a text editor.</p>
+<dl class="docutils">
+<dt><code class="file docutils literal"><span class="pre">rivus_db/sql/create_from_staruml.sh</span></code>:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">copies the raw scripts from <code class="file docutils literal"><span class="pre">rivus_db/sql/staruml_expor/</span></code> into <code class="file docutils literal"><span class="pre">rivus_db/sql/</span></code> and modifies them slightly</p>
+<blockquote>
+<div><ul class="simple">
+<li>add extension handling</li>
+<li>drop some generated defaults (encoding)</li>
+<li>your future feature?</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">executes the modified <cite>create_*.sql</cite> scripts.</p>
+</li>
+<li><p class="first">if executed with <code class="docutils literal"><span class="pre">extend</span></code> argument: <code class="docutils literal"><span class="pre">create_from_staruml.sh</span> <span class="pre">extend</span></code> the 2. step is omitted. (The scripts get modified, but not executed.)</p>
+</li>
+</ol>
+</dd>
+<dt><code class="file docutils literal"><span class="pre">rivus_db/sql/_purge_rivus.sh</span></code>:</dt>
+<dd><ul class="first last simple">
+<li>Executes the <code class="docutils literal"><span class="pre">drop_*.sql</span></code> scripts in <code class="file docutils literal"><span class="pre">rivus_db/sql/</span></code></li>
+</ul>
+</dd>
+<dt><code class="file docutils literal"><span class="pre">rivus_db/reset_db.sh</span></code>:</dt>
+<dd><ul class="first last simple">
+<li>Executes the above two scripts after each other. This results in a clean new database.</li>
+</ul>
+</dd>
+</dl>
 </div>
 </div>
 

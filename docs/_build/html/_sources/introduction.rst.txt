@@ -7,17 +7,17 @@ Moreover, the powerful features it is distributed it is highly extensible. Such 
 
 If it comes to code maturity and maintenance, :abbr:`PSQL (PostgreSQL)` has been around for a while, and is not going anywhere soon [#f1]_. It is flexible, fast and has a decent documentation.
 
-Anyway, if you hear now for the first time about PostgreSQL, databases and such. Here are some links to start with. But you can feel free use Google or look around in the local library for some offline knowledge. But I emphasise that you should not get scared from these links, they are here for the ones thirsty for deeper understanding, if you want to integrate ``rivus_db`` into rivus_, you can also get along with some clicks and commands and get your system up and running. 
+Anyway, if you hear now for the first time about PostgreSQL, databases and such. Here are some links to start with. But you can feel free and Google for better ones or look around in your local library for some offline knowledge. But I emphasise that you should not get scared from these links, they are here for the ones thirsty enough for deeper understanding, if you simply want to integrate ``rivus_db`` into rivus_, you can also get along with some clicks and commands and get your system up and running. 
 
 - `Stanford class`_ for university styled jump-start.
-- `Video jump-start`_ for those who prefer moving media.
+- `Video jump-start`_ for those who prefer that kind of learning.
 - `PostgreSQL specific`_ tour, you can jump through the too detailed sections.
-- `In depth understanding`_ for those how need to know all of it, before they start.
+- `In depth understanding`_ for those how need to know it all, before they can get started.
 
 If you need some inspiration to take a step away from the spreadsheet and CSV dominated data handling, refresh your frustrating memories with the `European Spreadsheet Risks Interest Group`_.
 
 
-.. [#f1] Developed since 1989. For years being in the top 5 popular databases DB-ENGINE_
+.. [#f1] Developed since 1989. Since years it has been in the top 5 most popular databases. DB-ENGINE_
 
 .. _rivus: https://github.com/tum-ens/rivus
 .. _Stanford class: http://web.stanford.edu/class/cs145/
@@ -44,8 +44,8 @@ privileges.
 Without Admin / root
 ^^^^^^^^^^^^^^^^^^^^^
 
-| Get the *multi-platform* `Postgres Package Manager`_ by BigSQL.
-| Follow the instructions on that page. (Less than 5 commands...)
+- Get the *multi-platform* `Postgres Package Manager`_ by BigSQL.
+- Follow the instructions on that page. (Less than 5 commands...)
 
 After you are ready, you can source the ``.env`` file (or execute :file:`/BigSQL/pgX.x/pg{X.x}-env.bat` .) So the `pgc`_ and ``psql`` commands get available globally.
 

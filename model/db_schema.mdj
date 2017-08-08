@@ -11184,7 +11184,7 @@
 									"number": 0
 								}
 							],
-							"type": "enum",
+							"type": "enum",h
 							"length": 0,
 							"primaryKey": false,
 							"foreignKey": false,

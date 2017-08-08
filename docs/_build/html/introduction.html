@@ -182,18 +182,18 @@
 It combines relational and document based structures very conveniently with each other.
 Moreover, the powerful features it is distributed it is highly extensible. Such an extension is the popular <a class="reference external" href="http://postgis.net/">PostGIS</a> extension, which enables geographical calculations, topological alteration and more, with high performance.</p>
 <p>If it comes to code maturity and maintenance, <abbr title="PostgreSQL">PSQL</abbr> has been around for a while, and is not going anywhere soon <a class="footnote-reference" href="#f1" id="id1">[1]</a>. It is flexible, fast and has a decent documentation.</p>
-<p>Anyway, if you hear now for the first time about PostgreSQL, databases and such. Here are some links to start with. But you can feel free use Google or look around in the local library for some offline knowledge. But I emphasise that you should not get scared from these links, they are here for the ones thirsty for deeper understanding, if you want to integrate <code class="docutils literal"><span class="pre">rivus_db</span></code> into <a class="reference external" href="https://github.com/tum-ens/rivus">rivus</a>, you can also get along with some clicks and commands and get your system up and running.</p>
+<p>Anyway, if you hear now for the first time about PostgreSQL, databases and such. Here are some links to start with. But you can feel free and Google for better ones or look around in your local library for some offline knowledge. But I emphasise that you should not get scared from these links, they are here for the ones thirsty enough for deeper understanding, if you simply want to integrate <code class="docutils literal"><span class="pre">rivus_db</span></code> into <a class="reference external" href="https://github.com/tum-ens/rivus">rivus</a>, you can also get along with some clicks and commands and get your system up and running.</p>
 <ul class="simple">
 <li><a class="reference external" href="http://web.stanford.edu/class/cs145/">Stanford class</a> for university styled jump-start.</li>
-<li><a class="reference external" href="https://www.youtube.com/watch?v=4Z9KEBexzcM">Video jump-start</a> for those who prefer moving media.</li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=4Z9KEBexzcM">Video jump-start</a> for those who prefer that kind of learning.</li>
 <li><a class="reference external" href="https://www.postgresql.org/files/developer/tour.pdf">PostgreSQL specific</a> tour, you can jump through the too detailed sections.</li>
-<li><a class="reference external" href="http://coding-geek.com/how-databases-work/">In depth understanding</a> for those how need to know all of it, before they start.</li>
+<li><a class="reference external" href="http://coding-geek.com/how-databases-work/">In depth understanding</a> for those how need to know it all, before they can get started.</li>
 </ul>
 <p>If you need some inspiration to take a step away from the spreadsheet and CSV dominated data handling, refresh your frustrating memories with the <a class="reference external" href="http://www.eusprig.org/horror-stories.htm">European Spreadsheet Risks Interest Group</a>.</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Developed since 1989. For years being in the top 5 popular databases <a class="reference external" href="https://db-engines.com/en/ranking">DB-ENGINE</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Developed since 1989. Since years it has been in the top 5 most popular databases. <a class="reference external" href="https://db-engines.com/en/ranking">DB-ENGINE</a></td></tr>
 </tbody>
 </table>
 <div class="section" id="get-postgresql">
@@ -209,10 +209,10 @@ privileges.
 </div>
 <div class="section" id="without-admin-root">
 <h3>Without Admin / root<a class="headerlink" href="#without-admin-root" title="Permalink to this headline">¶</a></h3>
-<div class="line-block">
-<div class="line">Get the <em>multi-platform</em> <a class="reference external" href="https://www.openscg.com/bigsql/package-manager/">Postgres Package Manager</a> by BigSQL.</div>
-<div class="line">Follow the instructions on that page. (Less than 5 commands…)</div>
-</div>
+<ul class="simple">
+<li>Get the <em>multi-platform</em> <a class="reference external" href="https://www.openscg.com/bigsql/package-manager/">Postgres Package Manager</a> by BigSQL.</li>
+<li>Follow the instructions on that page. (Less than 5 commands…)</li>
+</ul>
 <p>After you are ready, you can source the <code class="docutils literal"><span class="pre">.env</span></code> file (or execute <code class="file docutils literal"><span class="pre">/BigSQL/pgX.x/pg</span><em><span class="pre">X.x</span></em><span class="pre">-env.bat</span></code> .) So the <a class="reference external" href="https://www.openscg.com/bigsql/docs/pgcli/pgcli">pgc</a> and <code class="docutils literal"><span class="pre">psql</span></code> commands get available globally.</p>
 <p>If you did things right you can see the status, start, stop and more with:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>pgc status

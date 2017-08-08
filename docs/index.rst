@@ -16,7 +16,7 @@ and what you can and cannot do with these tools.
 
 In :doc:`introduction`, I gathered some information about the Postgresql database itself,
 and how I suggest to install it (multi-platform, without admin/root privileges).
-Afterwards, I show you the suggested work-flow with ``rivus_db``
+At the end of the walk-through, you will have seen the current work-flow with ``rivus_db``.
 
 Under :doc:`reference`, you can find the detailed entity diagram and description of the scripts.
 

@@ -22,7 +22,7 @@ in many other projects as well, I published and documented my work-flow.
 
 It is nothing ground breaking nor is it the *"next big thing"* but hopefully it will empower some to shed their fear from databases and enable themselves to work more efficiently with more data. 
 
-As such, this documentation also guide you through the database installation process. And gives some tips on the set-up maybe more in 
+As such, this documentation also guide you through the database installation process. And gives some tips on the set-up.
 
 Disclaimer
 -----------
