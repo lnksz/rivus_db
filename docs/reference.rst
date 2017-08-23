@@ -101,8 +101,10 @@ Notation: ``table.columns``
 	+ in
 	+ out
 
-Scripts
---------
+Scripts - Make Your Life Easier
+--------------------------------
+
+.. _scripts-anchor:
 
 Short summary of the used scripts. These scripts are shot and rich with in-line
 documentation. So for detail open them up with a text editor.
@@ -122,6 +124,43 @@ documentation. So for detail open them up with a text editor.
 
 :file:`rivus_db/reset_db.sh`:
 	- Executes the above two scripts after each other. This results in a clean new database.
+
+Archive (Dump - Import)
+------------------------
+
+One can have various reasons to archive a database. For our project a short excerpt of
+the detailed official-tutorial_ is given here.
+
+The bundled tools shipping with PostgreSQL_ are pretty amazing.
+In the previous :ref:`section <scripts-anchor>` or during :ref:`psql database connection <db-connect>`
+you already used one of them. (``psql``)
+Now we will get to know ``pg_dump`` and ``createdb``.
+
+To dump all the contents of a database:
+
+1. Make sure the database server is running.
+2. Dump the contents into a SQL file.
+
+	+ -U database-user
+	+ -f file name to dump to
+	+ last parameter without flag is the target database.
+
+3. [Optional] Transport the created file to the site, where it should be restored.
+4. Create a database where the restoration should take place.
+5. Restore from file with ``psql``
+
+.. code-block:: psql
+
+	pg_ctl status
+	pg_dump -U postgres -f rivus_dump.sql rivus
+	createdb -h localhost -U postgres rivus_import
+	psql -U postgres rivus_import < rivus_dump.sql
+
+
+A simple 
+
+.. _official-tutorial: https://www.postgresql.org/docs/current/static/backup.html
+.. _PostgreSQL: https://www.postgresql.org/
 
 
 

@@ -95,7 +95,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#entity-relations">Entity Relations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#enumerated-values">Enumerated values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scripts">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scripts-make-your-life-easier">Scripts - Make Your Life Easier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#archive-dump-import">Archive (Dump - Import)</a></li>
 </ul>
 </li>
 </ul>
@@ -344,9 +345,9 @@ Notation: <code class="docutils literal"><span class="pre">table.columns</span><
 </dd>
 </dl>
 </div>
-<div class="section" id="scripts">
-<h2>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
-<p>Short summary of the used scripts. These scripts are shot and rich with in-line
+<div class="section" id="scripts-make-your-life-easier">
+<h2>Scripts - Make Your Life Easier<a class="headerlink" href="#scripts-make-your-life-easier" title="Permalink to this headline">¶</a></h2>
+<p id="scripts-anchor">Short summary of the used scripts. These scripts are shot and rich with in-line
 documentation. So for detail open them up with a text editor.</p>
 <dl class="docutils">
 <dt><code class="file docutils literal"><span class="pre">rivus_db/sql/create_from_staruml.sh</span></code>:</dt>
@@ -377,6 +378,42 @@ documentation. So for detail open them up with a text editor.</p>
 </ul>
 </dd>
 </dl>
+</div>
+<div class="section" id="archive-dump-import">
+<h2>Archive (Dump - Import)<a class="headerlink" href="#archive-dump-import" title="Permalink to this headline">¶</a></h2>
+<p>One can have various reasons to archive a database. For our project a short excerpt of
+the detailed <a class="reference external" href="https://www.postgresql.org/docs/current/static/backup.html">official-tutorial</a> is given here.</p>
+<p>The bundled tools shipping with _PostgreSQL are pretty amazing.
+In the previous <a class="reference internal" href="#scripts-anchor"><span class="std std-ref">section</span></a> or during <a class="reference internal" href="introduction.html#db-connect"><span class="std std-ref">psql database connection</span></a>
+you already used one of them. (<code class="docutils literal"><span class="pre">psql</span></code>)
+Now we will get to know <code class="docutils literal"><span class="pre">pg_dump</span></code>.</p>
+<p>To dump all the contents of a database:</p>
+<ol class="arabic">
+<li><p class="first">Make sure the database server is running.</p>
+</li>
+<li><p class="first">Dump the contents into a SQL file.</p>
+<blockquote>
+<div><ul class="simple">
+<li>-U database-user</li>
+<li>-f file name to dump to</li>
+<li>last parameter without flag is the target database.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">[Optional] Transport the created file to the site, where it should be restored.</p>
+</li>
+<li><p class="first">Create a database where the restoration should take place.</p>
+</li>
+<li><p class="first">Restore from file with <code class="docutils literal"><span class="pre">psql</span></code></p>
+</li>
+</ol>
+<div class="highlight-psql"><div class="highlight"><pre><span></span><span class="n">pg_ctl</span> <span class="n">status</span>
+<span class="n">pg_dump</span> <span class="o">-</span><span class="n">U</span> <span class="n">postgres</span> <span class="o">-</span><span class="n">f</span> <span class="n">rivus_dump</span><span class="mf">.</span><span class="n">sql</span> <span class="n">rivus</span>
+<span class="n">createdb</span> <span class="o">-</span><span class="n">h</span> <span class="n">localhost</span> <span class="o">-</span><span class="n">U</span> <span class="n">postgres</span> <span class="n">rivus_import</span>
+<span class="n">psql</span> <span class="o">-</span><span class="n">U</span> <span class="n">postgres</span> <span class="n">rivus_import</span> <span class="o">&lt;</span> <span class="n">rivus_dump</span><span class="mf">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<p>A simple</p>
 </div>
 </div>
 

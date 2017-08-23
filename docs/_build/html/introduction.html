@@ -254,7 +254,7 @@ See <a class="reference internal" href="reference.html"><span class="doc">Refere
 </div>
 </div>
 <div class="section" id="connect-to-postgresql-server">
-<h2>Connect to PostgreSQL Server<a class="headerlink" href="#connect-to-postgresql-server" title="Permalink to this headline">¶</a></h2>
+<span id="db-connect"></span><h2>Connect to PostgreSQL Server<a class="headerlink" href="#connect-to-postgresql-server" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bare-bones">
 <h3>Bare bones<a class="headerlink" href="#bare-bones" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://postgresguide.com/utilities/psql.html">psql</a> ships with PostgreSQL. With it you can connect to your server and manage it or query the databases.</p>
@@ -281,9 +281,14 @@ We can also run a simple query:</p>
 <h3>Graphical UI<a class="headerlink" href="#graphical-ui" title="Permalink to this headline">¶</a></h3>
 <p>If you learn how to use <code class="docutils literal"><span class="pre">psql</span></code> from the command line you will gain some useful skills on the long run. However, you can use some graphical user interface to ease the learning curve or reuse queries.</p>
 <p>Besides the numerous proprietary tools, <a class="reference external" href="http://dbeaver.jkiss.org/">DBeaver</a> is a nice free tool to help you get along with the databases. Only drawback is that it is not available as portable, so you will need the proper privileges to install this piece of software.</p>
-<p>Also, under <code class="docutils literal"><span class="pre">rivus.schemas.tables</span></code> one can have a <em>“spreadsheet like”</em> view into the data. Moreover, you also get a diagram depiction of the relations.</p>
+<p>Under <code class="docutils literal"><span class="pre">rivus.schemas.tables</span></code> one can have a <em>“spreadsheet like”</em> view into the data. Moreover, you also get a diagram depiction of the relations.</p>
 <img alt="_images/DBeaver_screenshoot.png" src="_images/DBeaver_screenshoot.png" />
 <a class="reference internal image-reference" href="_images/DBeaver_screenshoot_er.png"><img alt="_images/DBeaver_screenshoot_er.png" src="_images/DBeaver_screenshoot_er.png" style="width: 571.2px; height: 816.0px;" /></a>
+<p>With syntax highlighted SQL queries the pioneering and middle level data analysis is made easier.</p>
+<div class="line-block">
+<div class="line">Note: You can even connect to a server’s running database service through an SSH tunnel.</div>
+<div class="line">This is only an extra minute to spend in the - New Connection - set-up of <a class="reference external" href="http://dbeaver.jkiss.org/">DBeaver</a>, but gives you graphical interface to remote information stored on a server database.</div>
+</div>
 </div>
 </div>
 <div class="section" id="integration-with-rivus">
@@ -307,7 +312,7 @@ We can also run a simple query:</p>
 <ol class="arabic simple">
 <li>Import sqlalchemy for managing the connection to the database.</li>
 <li>Import the db sub-package.</li>
-<li>Tell sqlalchemy, how it can reach the database. You can recognise the parameters from :ref:database-parameters</li>
+<li>Tell sqlalchemy, how it can reach the database. You can recognise the parameters from <a class="reference internal" href="#database-parameters">database-parameters</a></li>
 </ol>
 <ol class="arabic simple" start="7">
 <li>Call a self-written, high-level function to store the model related data (inputs and results) into the database schema.</li>
