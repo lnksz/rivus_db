@@ -40,4 +40,5 @@ What Next
 
 - :doc:`Getting started </introduction>`
 - :doc:`More Details </reference>`
+- :ref:`Queries <a_queries>`
 
