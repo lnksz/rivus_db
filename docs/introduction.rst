@@ -149,7 +149,7 @@ Graphical UI
 
 If you learn how to use ``psql`` from the command line you will gain some useful skills on the long run. However, you can use some graphical user interface to ease the learning curve or reuse queries.
 
-Besides the numerous proprietary tools, DBeaver_ is a nice free tool to help you get along with the databases. Only drawback is that it is not available as portable, so you will need the proper privileges to install this piece of software.
+Besides the numerous proprietary tools, DBeaver_ is a nice free tool to help you get along with the databases. The only drawback is that it is not available as portable from the official website, so you will either need the proper privileges to install this piece of software from the official source or trust a packaging website like `this <http://dbeaver-portable.en.lo4d.com/>`_. Among many useful features, the full-fledged SQL editor with autocompletion, the graphical query tool, the grid-like data-view and the possibility to access remote DBs through SSH are especially nice features to have.
 
 Under ``rivus.schemas.tables`` one can have a *"spreadsheet like"* view into the data. Moreover, you also get a diagram depiction of the relations.
 
