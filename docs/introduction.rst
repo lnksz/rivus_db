@@ -153,9 +153,9 @@ Besides the numerous proprietary tools, DBeaver_ is a nice free tool to help you
 
 .. note:: 
 
-	The is a free `academic license <https://dbeaver.com/academic-license/>`_ for the Enterprise Edition!
+	There is a free `academic license <https://dbeaver.com/academic-license/>`_ for the Enterprise Edition!
 	
-	There is also a 50% discount code for EE with this `code <https://github.com/serge-rider/dbeaver/wiki/Enterprise-Edition>`_
+	There is also a 50% discount code for EE with this `code <https://github.com/serge-rider/dbeaver/wiki/Enterprise-Edition>`_ if you are not an academic, but want to use EE.
 
 Under ``rivus.schemas.tables`` one can have a *"spreadsheet like"* view into the data. Moreover, you also get a diagram depiction of the relations.
 
@@ -165,8 +165,11 @@ Under ``rivus.schemas.tables`` one can have a *"spreadsheet like"* view into the
 
 With syntax highlighted SQL queries the pioneering and middle level data analysis is made easier.
 
-| Note: You can even connect to a server's running database service through an SSH tunnel.
-| This is only an extra minute to spend in the - New Connection - set-up of DBeaver_, but gives you graphical interface to remote information stored on a server database. 
+.. note::
+
+	You can even connect to a server's running database service through an SSH tunnel.
+	
+	This is only an extra minute to spend in the - New Connection - set-up of DBeaver_, but gives you graphical interface to remote information stored on a server database. 
 
 
 .. _DBeaver: http://dbeaver.jkiss.org/
