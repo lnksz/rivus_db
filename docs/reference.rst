@@ -349,7 +349,7 @@ To dump all the contents of a database:
     psql -U postgres rivus_import < rivus_dump.sql
 
 
-Voilà, you have there you have two local databases, on which you can run super fast queries.
+Voilà, there you have a second local database called rivus_import, on which you can run super fast queries.
 
 .. _official-tutorial: https://www.postgresql.org/docs/current/static/backup.html
 .. _PostgreSQL: https://www.postgresql.org/
